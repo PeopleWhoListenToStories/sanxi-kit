@@ -1,17 +1,17 @@
 <h2 align="center">
-    sanxi/web
+    sanxi-kit/web
 </h2>
 
 <p align="center">
-sanxi is a toolkit editor suite based on tiptap and prosemirror.
+sanxi-kit is a toolkit editor suite based on tiptap and prosemirror.
 </p>
 
 ```typescript
-import { EditorContent, useEditor } from "@sanxi/react";
-import { Document } from "@sanxi/document";
-import { TextKit } from "@sanxi/text-kit";
-import { BlockTile } from "@sanxi/blocktile";
-import { Uuid } from "@sanxi/uuid";
+import { EditorContent, useEditor } from "@sanxi-kit/react";
+import { Document } from "@sanxi-kit/document";
+import { TextKit } from "@sanxi-kit/text-kit";
+import { BlockTile } from "@sanxi-kit/blocktile";
+import { Uuid } from "@sanxi-kit/uuid";
 
 export const Editor = () => {
   const editor = useEditor({
