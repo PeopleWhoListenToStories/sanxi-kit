@@ -1,0 +1,36 @@
+{
+  "error": {
+    "request": {
+      "failed": {
+        "zh-CN": "请求失败",
+        "en": "Request failed"
+      },
+      "serverError": {
+        "zh-CN": "服务器异常",
+        "en": "Server error"
+      },
+      "unknownError": {
+        "zh-CN": "未知错误",
+        "en": "Unknown error"
+      },
+      "tooManyRequests": {
+        "zh-CN": "请求过于频繁，请稍候再试！",
+        "en": "Too many requests, please try again later!"
+      },
+      "initError": {
+        "zh-CN": "发起请求出错",
+        "en": "Failed to initiate request"
+      }
+    },
+    "auth": {
+      "inputRequired": {
+        "zh-CN": "请输入账号和密码",
+        "en": "Please enter your account and password"
+      },
+      "invalidCredentials": {
+        "zh-CN": "邮箱或密码错误",
+        "en": "Invalid email or password"
+      }
+    }
+  }
+}
