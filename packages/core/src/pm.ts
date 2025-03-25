@@ -79,9 +79,10 @@ export {
   type MarkViewConstructor as PMMarkViewConstructor,
   type NodeView as PMNodeView,
   type NodeViewConstructor as PMNodeViewConstructor,
+} from "@tiptap/pm/view";
+export {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   __serializeForClipboard as serializeForClipboard,
-} from "@tiptap/pm/view";
-
+} from 'prosemirror-view'
 export { history, redo, undo } from "@tiptap/pm/history";

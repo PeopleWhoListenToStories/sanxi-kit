@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@tiptap/core": "^2.2.4",
-    "@tiptap/pm": "^2.2.4"
+    "@tiptap/pm": "^2.2.4",
+    "prosemirror-view": "1.32.7"
   }
 }
