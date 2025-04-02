@@ -4,7 +4,7 @@ import { CheckIcon, LanguageIcon } from '@heroicons/react/24/solid';
 import * as Select from '@radix-ui/react-select';
 import clsx from 'clsx';
 import { useTransition } from 'react';
-import { Locale } from '~/i18n/config';
+import { Locale, locales } from '~/i18n/config';
 import { setUserLocale } from '~/services/locale';
 import { useRouter } from 'next/navigation';
 
@@ -30,14 +30,22 @@ export default function LocaleSwitcherSelect({
       const currentPath = window.location.pathname;
       const currentSearch = window.location.search;
       const segments = currentPath.split('/');
-      // 保留原有路径，只替换语言代码段
-      if (segments.length >= 2) {
+      
+      // 处理根路径的情况
+      if (segments.length <= 1) {
+        router.replace(`/${locale}${currentSearch}`);
+        return;
+      }
+      
+      // 替换或添加语言代码段
+      if (locales.includes(segments[1] as Locale)) {
         segments[1] = locale;
       } else {
-        segments.push(locale);
+        segments.splice(1, 0, locale);
       }
+      
       const newPath = segments.join('/');
-      router.replace(newPath + currentSearch);
+      router.replace(newPath + currentSearch)
     });
   }
 

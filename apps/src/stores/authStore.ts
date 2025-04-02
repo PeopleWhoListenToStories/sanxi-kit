@@ -8,7 +8,8 @@ interface AuthState {
   organization: {}
   organizations: any[]
   wikiList: any[]
-  login: (token: string, user: any) => void
+  setUser: (user: any) => void
+  setToken: (token: string) => void
   logout: () => void
   setOrganization: (organizations: any) => void
   setOrganizations: (organizations: any[]) => void
@@ -25,7 +26,8 @@ export const useAuthStore = create<AuthState>(
       organization: {},
       organizations: [],
       wikiList: [],
-      login: (token, user) => set({ token, user, isAuthenticated: true }),
+      setUser: (user) => set({user, isAuthenticated: true }),
+      setToken: (token) => set({ token }),
       logout: () => set({ token: null, user: null, isAuthenticated: false, organizations: [], wikiList: [] }),
       setOrganizations: (organizations) => set({ organizations }),
       setOrganization: (organization) => set({ organization }),

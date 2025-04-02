@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { withAuth } from 'next-auth/middleware';
+// import { withAuth } from 'next-auth/middleware';
 import createMiddleware from 'next-intl/middleware';
 
 import { routing } from '~/i18n/routing';
@@ -12,38 +12,45 @@ const publicPages = [
 
 const intlMiddleware = createMiddleware(routing);
 
-const authMiddleware = withAuth(
-  // Note that this callback is only invoked if
-  // the `authorized` callback has returned `true`
-  // and not for pages listed in `pages`.
-  (req) => intlMiddleware(req),
-  {
-    callbacks: {
-      authorized: ({ token }) => token != null
-    },
-    pages: {
-      signIn: '/login'
-    }
-  }
-);
+// const authMiddleware = withAuth(
+//   // Note that this callback is only invoked if
+//   // the `authorized` callback has returned `true`
+//   // and not for pages listed in `pages`.
+//   (req) => intlMiddleware(req),
+//   {
+//     callbacks: {
+//       authorized: ({ token }) => {
+//         return token != null
+//       }
+//     },
+//     pages: {
+//       signIn: '/login'
+//     }
+//   }
+// );
 
 export default function middleware(req: NextRequest) {
   const publicPathnameRegex = RegExp(`^(/(${routing.locales.join('|')}))?(${publicPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`, 'i');
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+  console.log(`%c 😽 🚀 : middleware -> isPublicPage `, `font-size:14px;background-color:#86ae2c;color:white;`, isPublicPage);
 
-  if (isPublicPage) {
-    return intlMiddleware(req);
-  } else {
-    return (authMiddleware as any)(req);
-  }
+  // if (isPublicPage) {
+  //   return intlMiddleware(req);
+  // } else {
+  //   return (authMiddleware as any)(req);
+  // }
+  return intlMiddleware(req);
+
 }
 
 
 export const config = {
   // Match only internationalized pathnames
   matcher: [
-    '/((?!api|trpc|_next|_vercel|slaykit|.*\\..*).*)', // 避免 middleware 影响 `/slaykit`
+    '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
     '/((?!_next|.*/opengraph-image|.*\\..*).*)',
-    '/', '/(zh-CN|en)/:path*'
+    '/', 
+    '/(zh-CN|en)/:path*',
+    '/slaykit/:path*'
   ]
 };

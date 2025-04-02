@@ -15,7 +15,7 @@ const Document = React.memo(({ params }: { params: { documentId: string } }) => 
 
   return (
     <WorkPageLayout>
-      {shouldRender && <WorkEditorContent token={token} userId={user.id} userName={user.nickname} documentId={params.documentId} />}
+      {shouldRender && <WorkEditorContent token={token} userId={user.userId} userName={user.username} documentId={params.documentId} />}
     </WorkPageLayout>
   )
 })

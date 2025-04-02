@@ -172,18 +172,18 @@ export const useBlockEditor = ({
       immediatelyRender: true,
       shouldRerenderOnTransaction: false,
       autofocus: true,
-      onCreate: ctx => {
+      onCreate: ({ editor }) => {
         if (provider && !provider.isSynced) {
           provider.on('synced', () => {
             setTimeout(() => {
-              if (ctx.editor.isEmpty) {
-                ctx.editor.commands.setContent(initialContent)
+              if (editor.isEmpty) {
+                editor.commands.setContent(initialContent)
               }
             }, 0)
           })
-        } else if (ctx.editor.isEmpty) {
-          ctx.editor.commands.setContent(initialContent)
-          ctx.editor.commands.focus('start', { scrollIntoView: true })
+        } else if (editor.isEmpty) {
+          editor.commands.setContent(initialContent)
+          editor.commands.focus('start', { scrollIntoView: true })
         }
       },
       extensions: [

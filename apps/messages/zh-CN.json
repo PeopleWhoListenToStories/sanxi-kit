@@ -86,6 +86,36 @@
     "title": "三喜 AI",
     "description": " 🏂 一是初次见面心生欢喜 二是久别重逢转悲为喜 三是 “恭喜”"
   },
+  "login": {
+    "title": "登录",
+    "description": "欢迎回来",
+    "loginWithGithub": "使用 GitHub 登录",
+    "passwordLogin": "密码登录",
+    "emailLogin": "邮箱登录",
+    "qrCode": "扫码登录",
+    "username": "用户名",
+    "usernamePlaceholder": "请输入用户名",
+    "password": "密码",
+    "passwordPlaceholder": "请输入密码",
+    "email": "邮箱",
+    "emailPlaceholder": "请输入邮箱",
+    "verifyCode": "验证码",
+    "verifyCodePlaceholder": "请输入验证码",
+    "sendVerifyCode": "发送验证码",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码？",
+    "loginButton": "登录",
+    "loggingIn": "登录中...",
+    "register": "注册账号",
+    "loginError": "登录失败，请检查账号密码",
+    "sendVerifyCodeError": "验证码发送失败",
+    "verifyCodeSent": "验证码已发送",
+    "success": "成功",
+    "error": "错误",
+    "errors": {
+      "emailRequired": "请输入邮箱"
+    }
+  },
   "Index": {
     "title": "首页",
     "description": "欢迎来到我们的应用",
@@ -140,6 +170,10 @@
     "tryAnotherEmail": "使用其他邮箱",
     "loginError": "登录失败，请稍后重试",
     "loginWithGithub": "使用 GitHub 账号登录",
+    "verifyCode": "验证码",
+    "verifyCodePlaceholder": "请输入验证码",
+    "sendVerifyCode": "发送验证码",
+    "sendVerifyCodeError": "验证码发送失败",
     "errors": {
       "emailRequired": "请输入邮箱",
       "emailInvalid": "请输入有效的邮箱地址",

@@ -49,7 +49,7 @@ export default function Document({ params }: PageProps) {
 
   const initWatermark = () => {
     new WatermarkJS({
-      content: '永远都像初次见面那样使我心荡漾',
+      content: [`永远都像初次见面那样使我心荡漾 `, `              - ${searchParams.get('user')}`],
       height: 32,
       width: 165,
     })
@@ -116,7 +116,7 @@ export default function Document({ params }: PageProps) {
           description={hasCollab ? t('global.connectingDisconnectOnlyEdit') : t('global.connectingDisconnectOnlyRead')}
         />
       )}
-      <BlockEditor editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
+      <BlockEditor userName={`游客-${searchParams.get('user')}`} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </div>
   );
 }

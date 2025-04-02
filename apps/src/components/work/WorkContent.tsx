@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Input } from '~/components/ui/input';
 import { Button } from '~/components/ui/button';
@@ -12,8 +12,9 @@ import { useAuthStore } from '~/stores/authStore';
 export const WorkContent = () => {
   const t = useTranslations('work');
   const router = useRouter();
+  const locale = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
-  const { organization, wikiList  } = useAuthStore();
+  const { organization, wikiList } = useAuthStore();
   const { create: createDocument, loading: createLoading } = useCreateDocument();
 
   return (
@@ -31,7 +32,7 @@ export const WorkContent = () => {
                   title: '未命名文档',
                 });
                 if (doc?.id) {
-                  router.push(`/work/${doc.id}`);
+                  router.push(locale + `/work/${doc.id}`);
                 }
               } catch (error) {
                 console.error('Failed to create document:', error);

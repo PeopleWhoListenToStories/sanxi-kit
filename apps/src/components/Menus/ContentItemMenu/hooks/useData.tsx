@@ -8,7 +8,6 @@ export const useData = () => {
 
   const handleNodeChange = useCallback(
     (data: { node: PMNode | null; editor: Editor; pos: number }) => {
-      console.log(`%c 🖨️ 🚀 : useData -> data `, `font-size:14px;background-color:#93cc54;color:black;`, data);
       if (data.node) {
         setCurrentNode(data.node);
       }

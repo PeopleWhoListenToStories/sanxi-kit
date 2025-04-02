@@ -10,6 +10,7 @@ import { Toolbar } from '~/components/ui/toolbar'
 import { copy } from '~/helpers/copy'
 import { AUTH_TOKEN_KEY, AUTH_USER_KEY, getStorage } from '~/helpers/storage'
 import { WorkHeader } from '~/components/work/WorkHeader'
+import { useAuthStore } from '~/stores/authStore'
 
 export type EditorHeaderProps = {
   editable?: boolean
@@ -34,8 +35,10 @@ export const EditorHeader = ({
 }: EditorHeaderProps) => {
   const t = useTranslations()
 
+  const { token, user} = useAuthStore()
+
   const handleCopyAction = async () => {
-    const shareUrl = `${window.location.origin}/share/${shareDocId}?userId=${getStorage(AUTH_USER_KEY)}&token=${getStorage(AUTH_TOKEN_KEY)}`
+    const shareUrl = `${window.location.origin}/share/${shareDocId}?user=${user.phone}&userId=${user.userId}&token=${token}`
     if (Math.random() > 0.5) {
       copy(`${shareUrl}`, () => {
         toast({

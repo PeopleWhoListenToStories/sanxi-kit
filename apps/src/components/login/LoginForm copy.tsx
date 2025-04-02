@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLogin } from '~/services/auth';
+import { useLogin, useEmailLogin, useVerifyCode } from '~/services/auth';
 import { useTranslations } from 'next-intl';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
@@ -16,10 +16,13 @@ import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/components/ui/form';
 import { Github } from 'lucide-react';
 import { signIn } from 'next-auth/react';
+import { useToast } from '~/components/ui/use-toast';
 
 const loginFormSchema = z.object({
-  username: z.string().min(1),
-  password: z.string().min(1)
+  email: z.string().email(),
+  phone: z.string().length(11, { message: '账号必须是11位' }),
+  password: z.string(),
+  verifyCode: z.string().length(6, { message: '验证码必须是6位数字' })
 });
 
 type LoginFormInput = z.infer<typeof loginFormSchema>;
@@ -40,36 +43,108 @@ export function LoginForm() {
   const router = useRouter();
   const [loginType, setLoginType] = useState('github');
   const [error, setError] = useState<string>();
-  const [emailSent, setEmailSent] = useState(false);
+  const [countdown, setCountdown] = useState(0);
 
   const form = useForm<LoginFormInput>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      username: '',
-      password: ''
+      email: '',
+      phone: '',
+      password: '',
+      verifyCode: ''
     }
   });
 
   const { mutate: loginMutate, isPending: isLoading } = useLogin();
+  const { mutate: emailLoginMutate, isPending: isEmailLoading } = useEmailLogin();
+
+  const { mutate: sendVerifyCodeMutate, isPending: isVerifyCodeLoading } = useVerifyCode();
 
   const onSubmit = async (data: LoginFormInput) => {
     setError(undefined);
     try {
-      await loginMutate({
-        phone: data.username,
-        password: data.password
-      }, {
-        onSuccess: () => {
-          router.push('/');
-        },
-        onError: (error) => {
-          console.error('Login error:', error);
-          setError(t('loginError'));
-        }
-      });
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirectPath = searchParams.get('redirect') || '/';
+      
+      console.log(`%c 🧝‍♂️ 🚀 : onSubmit -> loginType `, `font-size:14px;background-color:#371062;color:white;`, loginType);
+      if (loginType === 'password') {
+        await loginMutate({
+          phone: data.phone,
+          password: data.password
+        }, {
+          onSuccess: () => {
+            router.push(redirectPath);
+          },
+          onError: (error) => {
+            console.error('Login error:', error);
+            setError(t('loginError'));
+          }
+        });
+      } else if (loginType === 'email') {
+        await emailLoginMutate({
+          email: data.email,
+          verifyCode: data.verifyCode
+        }, {
+          onSuccess: () => {
+            router.push(redirectPath);
+          },
+          onError: (error) => {
+            console.error('Login error:', error);
+            setError(t('loginError'));
+          }
+        });
+      }
     } catch (error) {
       console.error('Login error:', error);
       setError(t('loginError'));
+    }
+  };
+
+  const { toast } = useToast();
+
+  const handleSendVerifyCode = async () => {
+    const email = form.getValues('email');
+    if (!email) {
+      form.setError('email', { message: t('errors.emailRequired') });
+      return;
+    }
+    try {
+      await sendVerifyCodeMutate(email, {
+        onSuccess: () => {
+          setCountdown(60);
+          const timer = setInterval(() => {
+            setCountdown((prev) => {
+              if (prev <= 1) {
+                clearInterval(timer);
+                return 0;
+              }
+              return prev - 1;
+            });
+          }, 1000);
+          // toast({
+          //   title: t('success'),
+          //   description: t('verifyCodeSent'),
+          //   variant: 'default'
+          // });
+        },
+        onError: (error) => {
+          console.error('Send verify code error:', error);
+          setError(t('sendVerifyCodeError'));
+          toast({
+            title: t('error'),
+            description: t('sendVerifyCodeError'),
+            variant: 'destructive'
+          });
+        }
+      })
+    } catch (error) {
+      console.error('Send verify code error:', error);
+      setError(t('sendVerifyCodeError'));
+      toast({
+        title: t('error'),
+        description: t('sendVerifyCodeError'),
+        variant: 'destructive'
+      });
     }
   };
 
@@ -103,10 +178,10 @@ export function LoginForm() {
           </TabsContent>
           <TabsContent value="password">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={() => { form.handleSubmit(onSubmit) }} className="space-y-6">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="phone"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-foreground/90">{t('username')}</FormLabel>
@@ -171,39 +246,65 @@ export function LoginForm() {
             </div>
           </TabsContent>
           <TabsContent value="email" className="py-6">
-            <div className="space-y-6">
-              {!emailSent ? (
-                <>
-                  <div className="space-y-3">
-                    <Label className="text-foreground/90">{t('email')}</Label>
-                    <Input
-                      type="email"
-                      placeholder={t('emailPlaceholder')}
-                      className="h-11 transition-all duration-200 focus:scale-[1.02]"
-                    />
-                  </div>
-                  <Button
-                    className="w-full h-11 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:scale-[1.02]"
-                    onClick={() => setEmailSent(true)}
-                  >
-                    {t('sendLoginLink')}
-                  </Button>
-                </>
-              ) : (
-                <div className="text-center space-y-4">
-                  <div className="text-sm text-muted-foreground">
-                    {t('emailLinkSent')}
-                  </div>
-                  <Button
-                    variant="outline"
-                    className="w-full h-11 text-base font-medium hover:bg-muted/50 transition-all duration-200 hover:scale-[1.02]"
-                    onClick={() => setEmailSent(false)}
-                  >
-                    {t('tryAnotherEmail')}
-                  </Button>
-                </div>
-              )}
-            </div>
+            <Form {...form}>
+              <form onSubmit={() => { form.handleSubmit(onSubmit) }} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground/90">{t('email')}</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={t('emailPlaceholder')}
+                          className="h-11"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="verifyCode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground/90">{t('verifyCode')}</FormLabel>
+                      <div className="flex gap-2">
+                        <FormControl>
+                          <Input
+                            placeholder={t('verifyCodePlaceholder')}
+                            className="h-11"
+                            {...field}
+                          />
+                        </FormControl>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="h-11 whitespace-nowrap"
+                          onClick={handleSendVerifyCode}
+                          disabled={countdown > 0 || isVerifyCodeLoading}
+                        >
+                          {countdown > 0 ? `${countdown}s` : t('sendVerifyCode')}
+                        </Button>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {error && (
+                  <div className="text-sm text-destructive text-center">{error}</div>
+                )}
+                <Button
+                  type="submit"
+                  className="w-full h-11 text-base font-medium transition-all hover:scale-[1.02] bg-primary text-primary-foreground hover:bg-primary/90"
+                  disabled={isEmailLoading}
+                >
+                  {isEmailLoading ? t('loggingIn') : t('loginButton')}
+                </Button>
+              </form>
+            </Form>
           </TabsContent>
         </Tabs>
       </CardContent>

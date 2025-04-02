@@ -18,7 +18,7 @@ const rewrites = async () => {
   return [
     {
       source: '/api/:slug*',
-      destination: 'http://localhost:3000/api:slug*',
+      destination: 'http://sanxi.xulai.fun/api:slug*',
     },
     {
       source: '/short-url/:slug*',
@@ -38,15 +38,15 @@ const rewrites = async () => {
     },
     {
       source: '/slaykit/:slug*',
-      destination: 'http://server.slay.xulai.fun/slaykit/:slug*',
+      destination: 'http://api.sanxi.xulai.fun/:slug*',
     },
     {
       source: '/zh-CN/slaykit/:slug*',
-      destination: 'http://server.slay.xulai.fun/slaykit/:slug*',
+      destination: 'http://api.sanxi.xulai.fun/:slug*',
     },
     {
       source: '/en/slaykit/:slug*',
-      destination: 'http://server.slay.xulai.fun/slaykit/:slug*',
+      destination: 'http://api.sanxi.xulai.fun/:slug*',
     },
   ];
 };
@@ -54,7 +54,7 @@ const rewrites = async () => {
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   output: 'standalone',
-  trailingSlash: true,
+  trailingSlash: false,
   reactStrictMode: false,
   poweredByHeader: false,
   eslint: {
@@ -69,17 +69,18 @@ const nextConfig: NextConfig = {
   rewrites,
   env: {
     SERVER_API_URL: '/slaykit',
-    COLLABORATION_API_URL: 'ws://110.40.181.43:30053/',
+    COLLABORATION_API_URL: 'http://api.sanxi.xulai.fun/wss/',
+    // COLLABORATION_API_URL: 'ws://110.40.181.43:30053/',
     NEXT_PUBLIC_LOCALE_PREFIX: 'always',
     NEXT_PUBLIC_TIPTAP_AI_APP_ID: '79drg0x6',
     NEXT_PUBLIC_TIPTAP_AI_TOKEN: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTk5MDQxNjl9.lYbRIEGpK2k5J8cRY-MEnx65gMn4uNx8YjUfBmGyn08',
     NEXT_PUBLIC_TIPTAP_AI_BASE_URL: '/ai',
-    NEXT_PUBLIC_SHORT_URL: 'http://api.xulai.fun',
+    NEXT_PUBLIC_SHORT_URL: 'https://api.xulai.fun',
     PORT: '30054',
     ENV: 'dev',
-    NEXT_PUBLIC_APP_URL: 'http://localhost:30054',
+    NEXT_PUBLIC_APP_URL: 'http://localhost:30064',
     NEXTAUTH_SECRET: 'R6M8k5IbsA8l9akKzGllij679B2JsVgOsdqi0hHiW8I=',
-    NEXTAUTH_URL: 'http://localhost:30054',
+    NEXTAUTH_URL: 'http://localhost:30064',
     GITHUB_CLIENT_ID: 'Ov23liESo088K0TL2f6R',
     GITHUB_CLIENT_SECRET: 'd8eaf116c7ec41373bf3db11c6b5fcfc8c810b95',
     NEXT_PUBLIC_AVATAR_URL: 'https://api.xulai.fun/image/fun-emoji/svg?radius=50&size=32&backgroundType=gradientLinear'

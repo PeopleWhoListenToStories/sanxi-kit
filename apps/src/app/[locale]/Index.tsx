@@ -9,6 +9,7 @@ import TypewriterEffect from '~/components/TypewriterEffect';
 import { Button } from '~/components/ui/button';
 import { BoltIcon, BoltSlashIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '~/stores/authStore';
 
 type Props = {
   session: Session | null;
@@ -18,10 +19,19 @@ export default function Index({ session }: Props) {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter()
+  const { user, logout } = useAuthStore()
+
+  const isLoginUser = session?.user?.name || user?.username
+
 
   function onLogoutClick() {
-    signOut();
+    if (session?.user?.name) {
+      signOut();
+    } else {
+      logout()
+    }
   }
+
 
   return (
     <DefaultPageLayout title={''}>
@@ -40,10 +50,10 @@ export default function Index({ session }: Props) {
           </div>
 
           <div className="mt-8 flex justify-center space-x-4">
-            {session?.user?.name ? (
+            {isLoginUser ? (
               <div className="space-x-4">
                 <Button id="start-using-button" data-umami-event="start-using-button" onClick={() => {
-                  if (!session?.user?.name) {
+                  if (!isLoginUser) {
                     signIn('github', { callbackUrl: locale + '/work' });
                   } else {
                     router.push(locale + '/work');
@@ -58,12 +68,11 @@ export default function Index({ session }: Props) {
                 </Button>
               </div>
             ) : (
-              <Link
-                href={locale + '/login'}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90"
-              >
-                {t('Index.loginRegister')}
-              </Link>
+              <Button id="index-login-register-button" data-umami-event="index-login-register-button">
+                <Link href={locale + '/login'} >
+                  {t('Index.loginRegister')}
+                </Link>
+              </Button>
             )}
           </div>
 

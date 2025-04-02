@@ -5,6 +5,7 @@ import { toast } from '~/components/ui/use-toast';
 // import { toLogin } from '~/services/user';
 import { useAuthStore } from '~/stores/authStore';
 import { isBrowser } from '~/helpers/utils/isEnv';
+import { removeStorage } from '~/helpers/storage';
 
 type WithCookieAxiosRequestConfig = AxiosRequestConfig & { cookie?: string };
 
@@ -42,7 +43,7 @@ HttpClient.interceptors.request.use((config: WithCookieAxiosRequestConfig) => {
 HttpClient.interceptors.response.use(
   (data) => {
     if (data.status && +data.status === 200 && data.data.status === 'error') {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+       
       isBrowser && toast({ title: data.data.message });
       return null;
     }
@@ -73,11 +74,11 @@ HttpClient.interceptors.response.use(
           }
           break;
         case 429:
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+           
           isBrowser && toast({ title: t('error.request.tooManyRequests') });
           break;
         default:
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+           
           isBrowser && toast({ title: (err.response && err.response.data && err.response.data.message) || t('error.request.unknownError') });
       }
       return Promise.reject({ statusCode: err.response.status, message: err.response.data.message });

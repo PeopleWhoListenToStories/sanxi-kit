@@ -6,10 +6,13 @@ import { Input } from "~/components/ui/input"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { useRouter, usePathname } from "next/navigation"
+import { useLocale } from "next-intl"
+import { useEffect } from "react"
 
 const userFormSchema = z.object({
   email: z.string().email(),
-  name: z.string().min(1, "请输入用户名"),
+  username: z.string().min(1, "请输入用户名"),
   avatar: z.string().url().optional()
 })
 
@@ -17,12 +20,23 @@ type UserFormInput = z.infer<typeof userFormSchema>
 
 export const UserOrSetting = () => {
   const { user } = useAuthStore()
+  const router = useRouter()
+  const pathname = usePathname()
+  const locale = useLocale()
+
+  useEffect(() => {
+    if (user && (!user?.email || !user?.username)) {
+      const encodedRedirect = encodeURIComponent(pathname)
+      const loginPath = locale === 'en' ? `/login?redirect=${encodedRedirect}` : `/${locale}/login?redirect=${encodedRedirect}`
+      router.replace(loginPath)
+    }
+  }, [user?.email, pathname, locale, router])
 
   const form = useForm<UserFormInput>({
     resolver: zodResolver(userFormSchema),
     defaultValues: {
       email: user?.email,
-      name: user?.name,
+      username: user?.username,
       avatar: user?.avatar
     }
   })
@@ -60,7 +74,7 @@ export const UserOrSetting = () => {
             />
             <FormField
               control={form.control}
-              name="name"
+              name="username"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>用户名</FormLabel>

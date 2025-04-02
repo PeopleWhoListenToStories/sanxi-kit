@@ -141,6 +141,12 @@
     "tryAnotherEmail": "Try another email",
     "loginError": "Login failed, please try again later",
     "loginWithGithub": "Login with GitHub",
+    "verifyCode": "Verification Code",
+    "verifyCodePlaceholder": "Enter verification code",
+    "sendVerifyCode": "Send Code",
+    "sendVerifyCodeError": "Failed to send verification code",
+    "verifyCodeSent": "verification sended",
+    "success": "success",
     "errors": {
       "emailRequired": "Email is required",
       "emailInvalid": "Please enter a valid email address",

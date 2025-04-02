@@ -43,11 +43,13 @@ const auth: AuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.email = user.email;
+        token.id = user.id;
+        token.name = user.name;
+        token.accessToken = user.accessToken;
       }
       return token;
     },
     async session({ session, token }) {
-      // console.log(`%c 👆 🚀 : session -> session, token `, `font-size:14px;background-color:#f40bb5;color:white;`, session, token);
       if (token) {
         if (session.user) {
           session.user.email = token.email;

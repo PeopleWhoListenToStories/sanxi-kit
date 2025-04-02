@@ -134,8 +134,8 @@ export const useUser = () => {
       const user = res as unknown as ILoginUser;
       setStorage('user', JSON.stringify(user));
       setUser(user as any);
-      setUserToken(user.token);
-      user.token && setStorage('token', user.token);
+      setUserToken(user.access_token);
+      user.token && setStorage('token', user.access_token);
 
       // 获取个人组织列表
       // const organizations = await getPersonalOrganization();
