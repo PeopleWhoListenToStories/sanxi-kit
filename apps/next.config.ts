@@ -18,7 +18,7 @@ const rewrites = async () => {
   return [
     {
       source: '/api/:slug*',
-      destination: 'http://sanxi.xulai.fun/api:slug*',
+      destination: 'http://sanxi.xulai.fun/api/:slug*',
     },
     {
       source: '/short-url/:slug*',
