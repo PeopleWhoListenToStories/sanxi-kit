@@ -47,9 +47,13 @@ export default function middleware(req: NextRequest) {
 export const config = {
   // Match only internationalized pathnames
   matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Always run for API routes
+    "/(api|trpc)(.*)",
     '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
     '/((?!_next|.*/opengraph-image|.*\\..*).*)',
-    '/', 
+    '/',
     '/(zh-CN|en)/:path*',
     '/slaykit/:path*'
   ]
