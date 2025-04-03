@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react'
 import { EditorContent } from '@sanxi-kit/react'
 import * as Y from 'yjs'
-import { TiptapCollabProvider } from '@hocuspocus/provider'
+import { HocuspocusProvider } from '@hocuspocus/provider'
 
 // import { ColumnsMenu } from '~/extensions/MultiColumn/menus'
 import { EditorContext } from '~/context/EditorContext'
@@ -21,7 +21,7 @@ import Loader from '~/components/ui/loader'
 import { createPortal } from 'react-dom'
 
 // eslint-disable-next-line react/display-name
-export const BlockEditor = React.memo(({ userName, aiToken, ydoc, provider, docId, editable = true }: { userName: string, aiToken?: string; ydoc: Y.Doc | null; docId: string, editable: boolean, provider?: TiptapCollabProvider | null | undefined }) => {
+export const BlockEditor = React.memo(({ userName, aiToken, ydoc, hasCollab, provider, docId, editable = true }: { userName: string, aiToken?: string; ydoc: Y.Doc | null; docId: string, hasCollab: boolean, editable: boolean, provider?: HocuspocusProvider | null | undefined }) => {
   const aiState = useAIState()
   
   const [isEditable, setIsEditable] = useState(true)

@@ -45,7 +45,7 @@ const auth: AuthOptions = {
         token.email = user.email;
         token.id = user.id;
         token.name = user.name;
-        token.accessToken = user.accessToken;
+        // token.accessToken = user.accessToken;
       }
       return token;
     },

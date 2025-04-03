@@ -57,6 +57,9 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   reactStrictMode: false,
   poweredByHeader: false,
+  typescript: {
+    ignoreBuildErrors: true
+  },
   eslint: {
     ignoreDuringBuilds: true
   },

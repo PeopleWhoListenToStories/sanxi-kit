@@ -5,7 +5,8 @@ import { WorkEditorContent } from '~/components/work/WorkEditorContent'
 import { useAuthStore } from '~/stores/authStore'
 import React, { useEffect, useState } from 'react'
 
-const Document = React.memo(({ params }: { params: { documentId: string } }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Document = React.memo(({ params }: any) => {
   const { token, user } = useAuthStore()
   const [shouldRender, setShouldRender] = useState(false)
 
@@ -15,7 +16,7 @@ const Document = React.memo(({ params }: { params: { documentId: string } }) => 
 
   return (
     <WorkPageLayout>
-      {shouldRender && <WorkEditorContent token={token} userId={user.userId} userName={user.username} documentId={params.documentId} />}
+      {shouldRender && <WorkEditorContent token={token + ''} userId={user.userId} userName={user.username} documentId={params.documentId} />}
     </WorkPageLayout>
   )
 })

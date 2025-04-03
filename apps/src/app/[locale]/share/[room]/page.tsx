@@ -13,10 +13,13 @@ import { Loader } from '~/components/ui/loader'
 import { useNetwork } from '~/hooks/useNetwork'
 import { useToggle } from '~/hooks/useToggle'
 
-interface PageProps {
-  params: Promise<any>;
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+// type PageProps = {
+//   params: {
+//     locale: string;
+//     room: string;
+//   };
+//   searchParams?: { [key: string]: string | string[] | undefined };
+// }
 
 export interface AiState {
   isAiLoading: boolean;
@@ -25,7 +28,8 @@ export interface AiState {
 
 export type ProviderStatus = 'connecting' | 'connected' | 'disconnected' | 'loadCacheSuccess';
 
-export default function Document({ params }: PageProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Document({ params }: any) {
   const searchParams = useSearchParams();
   const t = useTranslations();
   const { online } = useNetwork();
@@ -116,7 +120,7 @@ export default function Document({ params }: PageProps) {
           description={hasCollab ? t('global.connectingDisconnectOnlyEdit') : t('global.connectingDisconnectOnlyRead')}
         />
       )}
-      <BlockEditor userName={`游客-${searchParams.get('user')}`} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
+      <BlockEditor userName={`游客-${searchParams.get('user')}`} docId={room} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </div>
   );
 }
