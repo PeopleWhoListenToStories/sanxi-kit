@@ -1,5 +1,39 @@
 {
   "buildCommand": "pnpm install && pnpm build && cd apps && pnpm build",
   "outputDirectory": "apps/.next",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "rewrites": [
+    {
+      "source": "/api/:slug*",
+      "destination": "http://sanxi.xulai.fun/api/:slug*"
+    },
+    {
+      "source": "/short-url/:slug*",
+      "destination": "https://api.xulai.fun/short-url/:slug*"
+    },
+    {
+      "source": "/zh-CN/short-url/:slug*",
+      "destination": "https://api.xulai.fun/short-url/:slug*"
+    },
+    {
+      "source": "/en/short-url/:slug*",
+      "destination": "https://api.xulai.fun/short-url/:slug*"
+    },
+    {
+      "source": "/ai/:slug*",
+      "destination": "https://api-demo.tiptap.dev/v1/ai/:slug*"
+    },
+    {
+      "source": "/slaykit/:slug*",
+      "destination": "http://api.sanxi.xulai.fun/:slug*"
+    },
+    {
+      "source": "/zh-CN/slaykit/:slug*",
+      "destination": "http://api.sanxi.xulai.fun/:slug*"
+    },
+    {
+      "source": "/en/slaykit/:slug*",
+      "destination": "http://api.sanxi.xulai.fun/:slug*"
+    }
+  ]
 }
