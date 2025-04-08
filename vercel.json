@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm install && pnpm build && cd apps && pnpm build",
+  "buildCommand": "pnpm install && pnpm build && pnpm start",
   "outputDirectory": "apps/.next",
   "installCommand": "pnpm install",
   "rewrites": [
