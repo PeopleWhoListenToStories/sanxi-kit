@@ -53,7 +53,7 @@ const rewrites = async () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // output: 'standalone',
   trailingSlash: false,
   reactStrictMode: false,
   poweredByHeader: false,
