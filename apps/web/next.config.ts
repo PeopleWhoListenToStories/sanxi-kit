@@ -38,15 +38,15 @@ const rewrites = async () => {
     },
     {
       source: '/slaykit/:slug*',
-      destination: 'http://api.sanxi.xulai.fun/:slug*',
+      destination: 'https://api.sanxi.xulai.fun/:slug*',
     },
     {
       source: '/zh-CN/slaykit/:slug*',
-      destination: 'http://api.sanxi.xulai.fun/:slug*',
+      destination: 'https://api.sanxi.xulai.fun/:slug*',
     },
     {
       source: '/en/slaykit/:slug*',
-      destination: 'http://api.sanxi.xulai.fun/:slug*',
+      destination: 'https://api.sanxi.xulai.fun/:slug*',
     },
   ];
 };
@@ -72,7 +72,7 @@ const nextConfig: NextConfig = {
   rewrites,
   env: {
     SERVER_API_URL: '/slaykit',
-    COLLABORATION_API_URL: 'http://api.sanxi.xulai.fun/wss/',
+    COLLABORATION_API_URL: 'https://api.sanxi.xulai.fun/wss/',
     // COLLABORATION_API_URL: 'ws://110.40.181.43:30053/',
     NEXT_PUBLIC_LOCALE_PREFIX: 'always',
     NEXT_PUBLIC_TIPTAP_AI_APP_ID: '79drg0x6',
@@ -81,9 +81,9 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_SHORT_URL: 'https://api.xulai.fun',
     PORT: '30054',
     ENV: 'dev',
-    NEXT_PUBLIC_APP_URL: 'http://localhost:30064',
+    NEXT_PUBLIC_APP_URL: 'http://sanxi.xulai.fun',
     NEXTAUTH_SECRET: 'R6M8k5IbsA8l9akKzGllij679B2JsVgOsdqi0hHiW8I=',
-    NEXTAUTH_URL: 'http://localhost:30064',
+    NEXTAUTH_URL: 'http://sanxi.xulai.fun',
     GITHUB_CLIENT_ID: 'Ov23liESo088K0TL2f6R',
     GITHUB_CLIENT_SECRET: 'd8eaf116c7ec41373bf3db11c6b5fcfc8c810b95',
     NEXT_PUBLIC_AVATAR_URL: 'https://api.xulai.fun/image/fun-emoji/svg?radius=50&size=32&backgroundType=gradientLinear'
