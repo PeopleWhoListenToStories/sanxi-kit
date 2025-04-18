@@ -1,2 +1,5 @@
-User-Agent: *
-Allow: *
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sanxi.xulai.fun/sitemap.xml

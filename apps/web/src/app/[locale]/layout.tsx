@@ -24,10 +24,42 @@ export async function generateMetadata(
   const now = await getNow({ locale });
   const timeZone = await getTimeZone({ locale });
 
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}/${locale}`;
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL as string),
     title: t('title'),
     description: t('description'),
+    keywords: t('keywords'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url,
+      siteName: 'Sanxi',
+      locale,
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description')
+    },
+    alternates: {
+      canonical: url
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1
+      }
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    },
     other: {
       currentYear: formatter.dateTime(now, { year: 'numeric' }),
       timeZone

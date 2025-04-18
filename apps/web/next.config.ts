@@ -81,12 +81,13 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_SHORT_URL: 'https://api.xulai.fun',
     PORT: '30054',
     ENV: 'dev',
-    NEXT_PUBLIC_APP_URL: 'http://sanxi.xulai.fun',
+    NEXT_PUBLIC_APP_URL: 'https://sanxi.xulai.fun',
     NEXTAUTH_SECRET: 'R6M8k5IbsA8l9akKzGllij679B2JsVgOsdqi0hHiW8I=',
-    NEXTAUTH_URL: 'http://sanxi.xulai.fun',
+    NEXTAUTH_URL: 'https://sanxi.xulai.fun',
     GITHUB_CLIENT_ID: 'Ov23liESo088K0TL2f6R',
     GITHUB_CLIENT_SECRET: 'd8eaf116c7ec41373bf3db11c6b5fcfc8c810b95',
-    NEXT_PUBLIC_AVATAR_URL: 'https://api.xulai.fun/image/fun-emoji/svg?radius=50&size=32&backgroundType=gradientLinear'
+    NEXT_PUBLIC_AVATAR_URL: 'https://api.xulai.fun/image/fun-emoji/svg?radius=50&size=32&backgroundType=gradientLinear',
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'k995PycHqq0cx3k3DJfkxnkLq-7Rfm6sCywG4lS8JJM'
     // ENABLE_ALIYUN_OSS: !!config.oss.aliyun.accessKeyId,
     // DNS_PREFETCH: (config.client.dnsPrefetch || '').split(' '),
     // SEO_APPNAME: config.client.seoAppName,
