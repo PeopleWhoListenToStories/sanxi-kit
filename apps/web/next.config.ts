@@ -87,7 +87,7 @@ const nextConfig: NextConfig = {
     GITHUB_CLIENT_ID: 'Ov23liESo088K0TL2f6R',
     GITHUB_CLIENT_SECRET: 'd8eaf116c7ec41373bf3db11c6b5fcfc8c810b95',
     NEXT_PUBLIC_AVATAR_URL: 'https://api.xulai.fun/image/fun-emoji/svg?radius=50&size=32&backgroundType=gradientLinear',
-    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'k995PycHqq0cx3k3DJfkxnkLq-7Rfm6sCywG4lS8JJM'
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'WgSuiiXb-y1m0KzugvMLzFLWavsD02AX9wOz0wWXLtI'
     // ENABLE_ALIYUN_OSS: !!config.oss.aliyun.accessKeyId,
     // DNS_PREFETCH: (config.client.dnsPrefetch || '').split(' '),
     // SEO_APPNAME: config.client.seoAppName,
