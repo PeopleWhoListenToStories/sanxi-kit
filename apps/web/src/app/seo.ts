@@ -7,6 +7,10 @@ export function generateSEOMetadata({
   url,
   type = 'website',
   locale,
+  image,
+  publishedTime,
+  modifiedTime,
+  authors,
 }: {
   title: string;
   description: string;
@@ -14,6 +18,10 @@ export function generateSEOMetadata({
   url: string;
   type?: string;
   locale: string;
+  image?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
 }): Metadata {
   return {
     title,
@@ -26,6 +34,10 @@ export function generateSEOMetadata({
       siteName: 'Sanxi',
       locale,
       type,
+      ...(image && { images: [{ url: image }] }),
+      ...(publishedTime && { publishedTime }),
+      ...(modifiedTime && { modifiedTime }),
+      ...(authors?.length && { authors: authors.map(author => ({ name: author })) }),
     },
     twitter: {
       card: 'summary_large_image',
@@ -48,6 +60,17 @@ export function generateSEOMetadata({
     },
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': type === 'article' ? 'Article' : 'WebSite',
+      name: title,
+      description,
+      url,
+      ...(image && { image }),
+      ...(publishedTime && { datePublished: publishedTime }),
+      ...(modifiedTime && { dateModified: modifiedTime }),
+      ...(authors?.length && { author: authors.map(author => ({ '@type': 'Person', name: author })) }),
     },
   };
 }
