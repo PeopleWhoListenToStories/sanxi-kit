@@ -34,7 +34,7 @@ export async function generateMetadata(
       title: t('title'),
       description: t('description'),
       url,
-      siteName: 'Sanxi',
+      siteName: 'san xi',
       locale,
       type: 'website'
     },

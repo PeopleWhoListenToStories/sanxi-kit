@@ -84,7 +84,16 @@
   },
   "LocaleLayout": {
     "title": "San Xi AI",
-    "description": "First, the joy of meeting for the first time; Second, turning sorrow into joy when reuniting after a long separation; Third, congratulations"
+    "description": "First, the joy of meeting for the first time; Second, turning sorrow into joy when reuniting after a long separation; Third, congratulations",
+    "keywords": "AI, Collaboration, Writing, Smart Tools",
+    "siteName": "San Xi AI",
+    "openGraph": {
+      "siteName": "San Xi AI",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image"
+    }
   },
   "Index": {
     "title": "Home",
