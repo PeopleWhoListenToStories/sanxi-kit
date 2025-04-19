@@ -8,6 +8,7 @@ import { Button } from '~/components/ui/button';
 import { Spinner } from '~/components/ui/spinner';
 import { cn } from '~/helpers/utils';
 import { useDropZone, useFileUpload, useUploader } from './hooks';
+import { Icon } from '~/components/ui/icon';
 
 export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const t = useTranslations('upload');
