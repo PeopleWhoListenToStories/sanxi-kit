@@ -1,4 +1,5 @@
 import { AUTH_TOKEN_KEY, getStorage } from '~/helpers/storage';
+import { useAuthStore } from '~/stores/authStore';
 
 export class API {
   public static uploadImage = async (file: File) => {
@@ -7,11 +8,11 @@ export class API {
 
     return new Promise((resolve, reject) => {
       try {
-        fetch('/api/file/upload?unique=1', {
+        fetch('/slaykit/file/upload?unique=1', {
           method: 'POST',
           body: fileFormData,
           headers: {
-            Authorization: `Bearer ${getStorage(AUTH_TOKEN_KEY)}`,
+            Authorization: `Bearer ${useAuthStore.getState().token}`,
           },
         })
           .then(res => res.json())
