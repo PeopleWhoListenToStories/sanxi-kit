@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react'
-import { EditorContent } from '@sanxi-kit/react'
+// import { EditorContent } from '@sanxi-kit/react'
 import * as Y from 'yjs'
 import { HocuspocusProvider } from '@hocuspocus/provider'
 
@@ -14,6 +14,7 @@ import { TextMenu } from '~/components/Menus/TextMenu'
 import ImageBlockMenu from '~/extensions/ImageBlock/components/ImageBlockMenu'
 import { EditorSidebar } from '~/components/BlockEditor/components/EditorSidebar'
 import { EditorHeader } from '~/components/BlockEditor/components/EditorHeader'
+import Editor from '~/components/Editor/Editor';
 
 import '~/styles/editor.css'
 import "~/styles/components/index.scss"
@@ -70,7 +71,8 @@ export const BlockEditor = React.memo(({ userName, aiToken, ydoc, hasCollab, pro
             isSidebarOpen={leftSidebar.isOpen}
             toggleSidebar={leftSidebar.toggle}
           />
-          <EditorContent editor={editor} className="flex-1 overflow-y-auto" />
+          <Editor userName={userName} docId={docId} editable={true} aiToken={aiToken ?? undefined} hasCollab={true} ydoc={ydoc} provider={provider} /> 
+          {/* <EditorContent editor={editor} className="flex-1 overflow-y-auto" /> */}
           <ContentItemMenu editor={editor} isEditable={isEditable} />
           <LinkMenu editor={editor} appendTo={menuContainerRef} />
           <TextMenu editor={editor} />

@@ -7,6 +7,8 @@ import { useTransition } from 'react';
 import { Locale, locales } from '~/i18n/config';
 import { setUserLocale } from '~/services/locale';
 import { useRouter } from 'next/navigation';
+import { locale as editorLocale } from 'reactjs-tiptap-editor/locale-bundle'
+
 
 type Props = {
   defaultValue: string;
@@ -46,6 +48,11 @@ export default function LocaleSwitcherSelect({
       
       const newPath = segments.join('/');
       router.replace(newPath + currentSearch)
+      if (locale === 'en') {
+        editorLocale.setLang('en')
+      } else {
+        editorLocale.setLang('zh_CN')
+      }
     });
   }
 

@@ -124,7 +124,12 @@
     "vaul": "^1.1.2",
     "yjs": "^13.6.20",
     "zod": "^3.24.2",
-    "zustand": "^5.0.3"
+    "zustand": "^5.0.3",
+    "easydrawer": "^0.0.18",
+    "katex": "^0.16.22",
+    "prism-code-editor-lightweight": "^0.0.3",
+    "react-image-crop": "^11.0.10",
+    "reactjs-tiptap-editor": "^0.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

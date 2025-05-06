@@ -7,13 +7,11 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Doc as YDoc } from 'yjs'
 
-// import { BlockEditor } from '~/components/BlockEditor'
+import { BlockEditor } from '~/components/BlockEditor'
 import { Banner } from '~/components/ui/banner'
 import { Loader } from '~/components/ui/loader'
 import { useNetwork } from '~/hooks/useNetwork'
 import { useToggle } from '~/hooks/useToggle'
-// import EditorClient from '~/components/Editor/EditorClient';
-import Editor from '~/components/Editor/Editor';
 
 // type PageProps = {
 //   params: {
@@ -122,8 +120,7 @@ export default function Document({ params }: any) {
           description={hasCollab ? t('global.connectingDisconnectOnlyEdit') : t('global.connectingDisconnectOnlyRead')}
         />
       )}
-      <Editor userName={`游客-${searchParams.get('user')}`} docId={room} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
-      {/* <BlockEditor userName={`游客-${searchParams.get('user')}`} docId={room} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} /> */}
+      <BlockEditor userName={`游客-${searchParams.get('user')}`} docId={room} editable={false} aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </div>
   );
 }

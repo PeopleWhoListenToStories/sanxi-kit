@@ -35,7 +35,7 @@ export const WorkEditorContent = React.memo(({ documentId, userId, userName, tok
 
   return (
     <>
-      {mounted && (<BlockEditor userName={userName} docId={documentId} aiToken={aiToken ?? undefined} ydoc={providerState.yDoc} provider={providerState.provider} />)}
+      { mounted && (<BlockEditor userName={userName} docId={documentId} aiToken={aiToken ?? undefined} ydoc={providerState.yDoc} provider={providerState.provider} />)}
     </>
   )
 })

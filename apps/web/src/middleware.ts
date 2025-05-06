@@ -4,11 +4,11 @@ import createMiddleware from 'next-intl/middleware';
 
 import { routing } from '~/i18n/routing';
 
-const publicPages = [
-  '/',
-  '/login'
-  // (/secret requires auth)
-];
+// const publicPages = [
+//   '/',
+//   '/login'
+//   // (/secret requires auth)
+// ];
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -30,9 +30,8 @@ const intlMiddleware = createMiddleware(routing);
 // );
 
 export default function middleware(req: NextRequest) {
-  const publicPathnameRegex = RegExp(`^(/(${routing.locales.join('|')}))?(${publicPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`, 'i');
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-  console.log(`%c 😽 🚀 : middleware -> isPublicPage `, `font-size:14px;background-color:#86ae2c;color:white;`, isPublicPage);
+  // const publicPathnameRegex = RegExp(`^(/(${routing.locales.join('|')}))?(${publicPages.flatMap((p) => (p === '/' ? ['', '/'] : p)).join('|')})/?$`, 'i');
+  // const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
   // if (isPublicPage) {
   //   return intlMiddleware(req);

@@ -35,38 +35,48 @@ export const EditorHeader = ({
 }: EditorHeaderProps) => {
   const t = useTranslations()
 
-  const { token, user} = useAuthStore()
+  const { token, user } = useAuthStore()
 
   const handleCopyAction = async () => {
     const shareUrl = `${window.location.origin}/share/${shareDocId}?user=${user.phone}&userId=${user.userId}&token=${token}`
-    if (Math.random() > 0.5) {
+    // if (Math.random() > 0.5) {
+    //   copy(`${shareUrl}`, () => {
+    //     toast({
+    //       description: <div>{t('global.copySuccess')}</div>,
+    //     })
+    //   })
+    // } else {
+    try {
+      const params = new URLSearchParams({ url: shareUrl });
+      const { code, data } = await (await fetch(`/short-url?${params}`, { method: 'GET' })).json()
+
+      if (code === 200 && data) {
+        copy(`${process.env.NEXT_PUBLIC_SHORT_URL}/${data}`, () => {
+          toast({
+            description: <div>{t('global.copySuccess')}</div>,
+          })
+        })
+      } else {
+        copy(`${shareUrl}`, () => {
+          toast({
+            description: <div>{t('global.copySuccess')}</div>,
+          })
+        })
+        // toast({
+        //   description: <div>{t('global.copyFail')}</div>,
+        // })
+      }
+    } catch (err) {
       copy(`${shareUrl}`, () => {
         toast({
           description: <div>{t('global.copySuccess')}</div>,
         })
       })
-    } else {
-      try {
-        const params = new URLSearchParams({ url: shareUrl });
-        const { code, data } = await (await fetch(`/short-url?${params}`, { method: 'GET' })).json()
-
-        if (code === 200 && data) {
-          copy(`${process.env.NEXT_PUBLIC_SHORT_URL}/${data}`, () => {
-            toast({
-              description: <div>{t('global.copySuccess')}</div>,
-            })
-          })
-        } else {
-          toast({
-            description: <div>{t('global.copyFail')}</div>,
-          })
-        }
-      } catch (err) {
-        toast({
-          description: <div>{t('global.copyFail')}</div>,
-        })
-      }
+      // toast({
+      //   description: <div>{t('global.copyFail')}</div>,
+      // })
     }
+    // }
   }
 
   return (
