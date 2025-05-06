@@ -38,15 +38,15 @@ const rewrites = async () => {
     },
     {
       source: '/slaykit/:slug*',
-      destination: 'https://api.sanxi.xulai.fun/api-sanxi/:slug*',
+      destination: 'http://110.40.181.43:31062/:slug*',
     },
     {
       source: '/zh-CN/slaykit/:slug*',
-      destination: 'https://api.sanxi.xulai.fun/api-sanxi/:slug*',
+      destination: 'http://110.40.181.43:31062/:slug*',
     },
     {
       source: '/en/slaykit/:slug*',
-      destination: 'https://api.sanxi.xulai.fun/api-sanxi/:slug*',
+      destination: 'http://110.40.181.43:31062/:slug*',
     },
   ];
 };
