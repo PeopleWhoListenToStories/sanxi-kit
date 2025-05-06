@@ -14,7 +14,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="zh-CN" className={inter.className}>
       <head>
-        <Script defer src="https://umami.xulai.live/script.js" data-website-id="4e405d27-c14b-4799-8fd0-31a7b250c32b" />
+        <Script defer src="https://umami.xulai.fun/script.js" data-website-id="4e405d27-c14b-4799-8fd0-31a7b250c32b" />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="enableSystem" enableSystem={true}>
