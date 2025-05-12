@@ -71,6 +71,7 @@ import 'katex/dist/katex.min.css'
 import 'easydrawer/styles.css'
 import 'react-image-crop/dist/ReactCrop.css';
 import { Collaboration } from '~/extensions/Collaboration';
+import API from '~/helpers/api';
 // import { CollaborationCursor } from '~/extensions/CollaborationCursor';
 
 function convertBase64ToBlob(base64: string) {
@@ -124,19 +125,15 @@ const extensions = [
   Link,
   Image.configure({
     upload: (files: File) => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(URL.createObjectURL(files))
-        }, 500)
+      return new Promise(async (resolve) => {
+        resolve(await API.uploadImage(file))
       })
     },
   }),
   Video.configure({
     upload: (files: File) => {
       return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(URL.createObjectURL(files))
-        }, 500)
+        resolve(await API.uploadImage(file))
       })
     },
   }),
