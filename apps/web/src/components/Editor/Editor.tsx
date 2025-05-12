@@ -125,15 +125,25 @@ const extensions = [
   Link,
   Image.configure({
     upload: (files: File) => {
-      return new Promise(async (resolve) => {
-        resolve(await API.uploadImage(files))
+      return new Promise((resolve) => {
+        API.uploadImage(files).then((res) => {
+          const url: string = (res as string).replace('https://api.sanxi.xulai.fun', 'http://110.40.181.43:31062')
+          resolve(url)
+        }).catch(() => {
+          resolve(URL.createObjectURL(files))
+        })
       })
     },
   }),
   Video.configure({
     upload: (files: File) => {
       return new Promise((resolve) => {
-        resolve(await API.uploadImage(files))
+        API.uploadImage(files).then((res) => {
+          const url: string = (res as string).replace('https://api.sanxi.xulai.fun', 'http://110.40.181.43:31062')
+          resolve(url)
+        }).catch(() => {
+          resolve(URL.createObjectURL(files))
+        })
       })
     },
   }),
