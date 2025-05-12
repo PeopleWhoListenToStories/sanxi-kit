@@ -126,14 +126,14 @@ const extensions = [
   Image.configure({
     upload: (files: File) => {
       return new Promise(async (resolve) => {
-        resolve(await API.uploadImage(file))
+        resolve(await API.uploadImage(files))
       })
     },
   }),
   Video.configure({
     upload: (files: File) => {
       return new Promise((resolve) => {
-        resolve(await API.uploadImage(file))
+        resolve(await API.uploadImage(files))
       })
     },
   }),
