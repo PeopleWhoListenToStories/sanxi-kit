@@ -72,7 +72,7 @@ const nextConfig: NextConfig = {
   rewrites,
   env: {
     SERVER_API_URL: '/slaykit',
-    COLLABORATION_API_URL: 'https://api.sanxi.xulai.fun/ws-sanxi/',
+    COLLABORATION_API_URL: 'https://api.sanxi.xulai.fun/ws/',
     // COLLABORATION_API_URL: 'wss://110.40.181.43:31063/',
     NEXT_PUBLIC_LOCALE_PREFIX: 'always',
     NEXT_PUBLIC_TIPTAP_AI_APP_ID: '79drg0x6',
