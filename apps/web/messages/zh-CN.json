@@ -1,0 +1,163 @@
+{
+  "global": {
+    "loading": "加载中",
+    "connect": "连接",
+    "connecting": "正在连接",
+    "connectingDisconnectOnlyEdit": "我们已与您断开连接，您可以继续编辑文档。一旦重新连接，我们会自动重新提交数据.",
+    "connectingDisconnectOnlyRead": "我们已与您断开连接，您可以继续阅读文档。一旦重新连接，我们会自动重新刷新数据.",
+    "copySuccess": "复制成功",
+    "copyFail": "复制失败",
+    "technological exchanges": "技术交流",
+    "dashboard": "数据大盘",
+    "customChart": "自定义报表",
+    "rpa": "可视化流程编排",
+    "drawio": "流程图编辑器",
+    "monitor": "数据监控",
+    "userManage": "用户管理",
+    "formEngine": "表单引擎",
+    "board": "办公白板",
+    "orderList": "订单列表",
+    "resource": "资产管理",
+    "dragMode": "拖拽搭建",
+    "agents": "AI智能问答",
+    "excel": "电子表格",
+    "chart": "图表制作"
+  },
+  "globalEditor": {
+    "words": "行",
+    "characters": "共 {count} 字",
+    "saved": "已保存",
+    "shareLink": "分享链接",
+    "openSidebar": "打开侧边栏",
+    "closeSidebar": "收起侧边栏",
+    "tableOfContent": "目录",
+    "tableOfTitle": "开始在文档中添加标题",
+    "loading": "加载中",
+    "connect": "连接",
+    "connecting": "正在连接",
+    "disconnect": "断开连接"
+  },
+  "aiWriter": {
+    "preview": "预览",
+    "prompt": "提示",
+    "placeholder": "告诉我你想让我写什么.",
+    "reset": "重置",
+    "discard": "丢弃",
+    "insert": "插入",
+    "regenerate": "重新生成",
+    "generateText": "生成文本",
+    "loaderLabel": "AI 正在生成中.",
+    "toastTitle": "提示",
+    "toastText": "请输入描述."
+  },
+  "aiImage": {
+    "preview": "预览",
+    "prompt": "提示",
+    "placeholder": "请描述您希望我生成的图像.",
+    "reset": "重置",
+    "discard": "丢弃",
+    "insert": "插入",
+    "regenerate": "重新生成",
+    "generateImage": "生成图像",
+    "loaderLabel": "AI 正在生成中.",
+    "toastTitle": "提示",
+    "toastText": "请输入描述.",
+    "imageStyle": "图像风格"
+  },
+  "upload": {
+    "dragDropTip": "拖放到这里",
+    "dragImageTip": "拖放图片到这里",
+    "uploadBtn": "上传图像"
+  },
+  "common": {
+    "LocaleSwitcher": {
+      "zh-CN": "🇨🇳 简体中文",
+      "en": "🇺🇸 English",
+      "label": "语言",
+      "locale": "{locale, select, zh {🇨🇳 简体中文} en {🇺🇸 English} other {Unknown}}"
+    },
+    "ThemeSwitcher": {
+      "dark": "深色",
+      "light": "浅色",
+      "label": "主题"
+    }
+  },
+  "LocaleLayout": {
+    "title": "三喜 AI",
+    "description": " 🏂 一是初次见面心生欢喜 二是久别重逢转悲为喜 三是 “恭喜”",
+    "keywords": "人工智能, 协同办公, 智能写作, 智能工具",
+    "siteName": "三喜 AI",
+    "openGraph": {
+      "siteName": "三喜 AI",
+      "type": "网站"
+    },
+    "twitter": {
+      "card": "大图预览"
+    }
+  },
+  "Index": {
+    "title": "首页",
+    "description": "欢迎来到我们的应用",
+    "loggedIn": "欢迎回来，{username}！",
+    "loggedOut": "您尚未登录。",
+    "login": "登录",
+    "logout": "退出登录",
+    "loginRegister": "立即登录 / 注册",
+    "aiWriting": "AI 智能写作",
+    "aiWritingDesc": "利用 AI 技术提高写作效率，提升创作质量",
+    "collaboration": "多人协同编辑",
+    "collaborationDesc": "与其他人实时协作，共同完成项目",
+    "efficient": "高效轻量级",
+    "efficientDesc": "一键注册，随时随地开始写作",
+    "slogan": "三喜 AI, 智能写作 高效工作",
+    "typewriterText": "🐈  基于 GPT 模型，AI 智能写作，AI 文本处理，分享文档，多人协同编辑 ",
+    "startUsing": "开始使用"
+  },
+  "NotFound": {
+    "title": "页面未找到",
+    "description": "抱歉，您访问的页面不存在"
+  },
+  "work": {
+    "title": "我的文档",
+    "newDocument": "新建文档",
+    "searchPlaceholder": "搜索文档...",
+    "recentDocuments": "最近文档",
+    "starredDocuments": "收藏文档",
+    "sharedDocuments": "共享文档",
+    "noDocuments": "暂无文档"
+  },
+  "login": {
+    "title": "登录",
+    "description": "欢迎回来",
+    "email": "邮箱",
+    "password": "密码",
+    "emailPlaceholder": "请输入邮箱",
+    "passwordPlaceholder": "请输入密码",
+    "loginButton": "登录",
+    "loggingIn": "登录中...",
+    "username": "用户名",
+    "usernamePlaceholder": "请输入用户名",
+    "qrCode": "二維码登录",
+    "emailLogin": "邮箱登录",
+    "passwordLogin": "密码登录",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码？",
+    "register": "注册账号",
+    "scanQrCode": "请使用手机扫描二维码登录",
+    "sendLoginLink": "发送登录链接",
+    "emailLinkSent": "登录链接已发送到您的邮箱",
+    "tryAnotherEmail": "使用其他邮箱",
+    "loginError": "登录失败，请稍后重试",
+    "loginWithGithub": "使用 GitHub 账号登录",
+    "verifyCode": "验证码",
+    "verifyCodePlaceholder": "请输入验证码",
+    "sendVerifyCode": "发送验证码",
+    "sendVerifyCodeError": "验证码发送失败",
+    "errors": {
+      "emailRequired": "请输入邮箱",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "passwordRequired": "请输入密码",
+      "loginFailed": "登录失败，请检查邮箱和密码"
+    }
+  }
+}

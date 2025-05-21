@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://sanxi.xulai.fun/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sanxi.xulai.fun/zh-CN" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanxi.xulai.fun/en" />
+  </url>
+  <url>
+    <loc>https://sanxi.xulai.fun/zh-CN</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanxi.xulai.fun/en" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sanxi.xulai.fun/zh-CN" />
+  </url>
+  <url>
+    <loc>https://sanxi.xulai.fun/en</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sanxi.xulai.fun/zh-CN" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanxi.xulai.fun/en" />
+  </url>
+</urlset>

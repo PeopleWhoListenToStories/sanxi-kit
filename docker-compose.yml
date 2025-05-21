@@ -1,0 +1,20 @@
+version: "3"
+services:
+  snaxi-app:
+    build:
+      context: .
+    image: snaxi-app
+    container_name: snaxi-app
+    volumes:
+      - ./runtime/static:/app/packages/server/static
+    environment:
+      - TZ=Asia/Shanghai
+    expose:
+      - "30054-30054"
+    ports:
+      - "30054-30054:30054-30054"
+    networks:
+      - snaxi-app
+networks:
+  snaxi-app:
+    driver: bridge
