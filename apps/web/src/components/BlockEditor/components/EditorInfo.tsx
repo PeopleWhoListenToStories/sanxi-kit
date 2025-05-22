@@ -29,7 +29,7 @@ export const EditorInfo = memo(({ characters, collabState, users, words }: Edito
                   <TooltipTrigger asChild>
                     <img
                       className="w-8 h-8 border border-white rounded-full dark:border-black"
-                      src={`${process.env.NEXT_PUBLIC_AVATAR_URL}&backgroundColor=${user.color ? user.color.replace('#', '') : null}`}
+                      src={`${process.env.NEXT_PUBLIC_AVATAR_URL}&backgroundColor=c0aede`}
                       alt="avatar"
                     />
                   </TooltipTrigger>
